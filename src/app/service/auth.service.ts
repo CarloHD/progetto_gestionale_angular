@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core'
 import { CanActivateFn, Router } from '@angular/router'
 import { BehaviorSubject, Subject } from 'rxjs'
 import { User } from '../shared/user.model'
-import { bodyAuth, resAuth, resErrorAuth } from '../shared/firebase.model'
+import { resAuth, resErrorAuth } from '../shared/firebase.model'
 
 @Injectable({
   providedIn: 'root'

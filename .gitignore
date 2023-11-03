@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /bazel-out
+/.firebase
 
 # Node
 /node_modules
@@ -42,3 +43,4 @@ testem.log
 Thumbs.db
 /.angular
 /.git
+environment.development.ts

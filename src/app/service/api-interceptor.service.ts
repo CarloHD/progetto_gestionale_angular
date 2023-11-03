@@ -7,12 +7,11 @@ import {
 } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
+import { environment } from 'src/environments/environment'
 
-const apiKey = 'AIzaSyDMZg-c6WN96CkS9plnTFDwOGWapaDPzFU '
+const authRegisterEndpoint = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.apiKey}`
 
-const authRegisterEndpoint = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`
-
-const authLoginEndpoint = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`
+const authLoginEndpoint = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`
 
 const storeEndpoint =
   'https://gestionale-angular-chd-default-rtdb.europe-west1.firebasedatabase.app/negozi'
