@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1>Angular dashboard</h1>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <p *ngIf="isLogged">Username: {{ username }}</p>
+          <div class="btn-group btn-group-justified">
+            <a
+              *ngIf="!isLogged"
+              routerLink="login"
+              class="btn btn-primary"
+            >Accedi</a>
+            <a
+              *ngIf="isLogged"
+              class="btn btn-danger"
+              (click)="logout()"
+            >Esci</a>
+          </div>
+        </li>
+        <a
+          class="list-group-item"
+          [routerLink]="''"
+          [routerLinkActive]="'active'"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >Home
+        </a>
+        <ng-container *ngIf="listaNegozi.length !== 0; else noNegozi">
+          <a
+            class="list-group-item"
+            *ngFor="let negozio of listaNegozi"
+            [routerLink]="[negozio.id]"
+            [routerLinkActive]="'active'"
+          >{{negozio.nome}}
+          </a>
+        </ng-container>
+        <ng-template #noNegozi>
+          <li class="list-group-item">Nessun negozio</li>
+        </ng-template>
+        <li
+          class="list-group-item"
+          *ngIf="isLogged"
+        >
+          <a
+            routerLink="nuovo-negozio"
+            [queryParams]="{ type: 'add' }"
+            class="btn btn-block btn-primary"
+          >
+            Nuovo negozio
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <router-outlet> </router-outlet>
+    </div>
+  </div>
+</div>

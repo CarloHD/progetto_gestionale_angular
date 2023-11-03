@@ -1,0 +1,72 @@
+<div class="col-md-12">
+  <div
+    *ngIf="authErrorMsg"
+    class="alert alert-danger"
+    role="alert"
+  >
+    <p>
+      <b>{{ authErrorMsg}}</b>
+    </p>
+  </div>
+  <ul class="nav nav-tabs nav-justified">
+    <li [ngClass]="{ active: !newUserMode }">
+      <a (click)="switchMode($event)">Login</a>
+    </li>
+    <li [ngClass]="{ active: newUserMode }">
+      <a (click)="switchMode($event)">Registrati</a>
+    </li>
+  </ul>
+  <br />
+  <form #authForm="ngForm">
+    <div
+      class="form-group"
+      [ngClass]="{ 'has-error': emailInput.invalid && emailInput.touched }"
+    >
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        #emailInput="ngModel"
+        class="form-control"
+        ngModel
+        required
+        email
+      />
+      <span
+        *ngIf="emailInput.invalid && emailInput.touched"
+        class="help-block"
+      >Inserire una email valida</span>
+    </div>
+    <div
+      class="form-group"
+      [ngClass]="{ 'has-error': passInput.invalid && passInput.touched }"
+    >
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        #passInput="ngModel"
+        class="form-control"
+        ngModel
+        required
+        minlength="6"
+      />
+      <span
+        *ngIf="passInput.invalid && passInput.touched"
+        class="help-block"
+      >Inserire una password di almeno 6 caratteri </span>
+    </div>
+    <div class="btn-group">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="authForm.invalid"
+        (click)="submitForm()"
+      >
+        {{ newUserMode ? "Registrati" : "Login" }}
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="jumbotron text-center">
+      <h2 *ngIf="isLogged">Pagina non trovata!</h2>
+      <p *ngIf="!isLogged">
+        Mi dispiace ma non hai i permessi per accedere a questa pagina
+      </p>
+    </div>
+  </div>
+</div>

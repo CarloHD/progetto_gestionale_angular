@@ -1,0 +1,91 @@
+<div
+  class="row"
+  *ngIf="isLogged; else noLogged"
+>
+  <div class="col-md-12">
+    <div
+      class="form-group"
+      [ngClass]="{ 'has-error': nomeProdotto.trim().length === 0 }"
+    >
+      <label for="nomeProdotto">Nome prodotto</label>
+      <input
+        type="text"
+        id="nomeProdotto"
+        class="form-control"
+        [(ngModel)]="nomeProdotto"
+      />
+    </div>
+    <!-- <div
+      class="form-group"
+      [ngClass]="{ 'has-error': descrizioneProdotto.trim().length === 0 }"
+    >
+      <label for="descrizioneProdotto">Descrizione prodotto</label>
+      <textarea
+        id="descrizioneProdotto"
+        class="form-control"
+        [ngStyle]="{ resize: 'vertical' }"
+        [(ngModel)]="descrizioneProdotto"
+      ></textarea>
+    </div> -->
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label for="prezzoProdotto">Prezzo prodotto</label>
+        <div class="input-group">
+          <input
+            type="number"
+            step="0.01"
+            min="0"
+            id="prezzoProdotto"
+            class="form-control"
+            [(ngModel)]="prezzoProdotto"
+          />
+          <span class="input-group-addon">€</span>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="quantitaProdotto">Quantità prodotto</label>
+        <div class="input-group">
+          <input
+            type="number"
+            step="1"
+            min="0"
+            id="quantitaProdotto"
+            class="form-control"
+            [(ngModel)]="quantitaProdotto"
+          />
+          <span class="input-group-addon">pz</span>
+        </div>
+      </div>
+    </div>
+    <!-- <div
+      class="form-group"
+      [ngClass]="{ 'has-error': imgPathProdotto.trim().length === 0 }"
+    >
+      <label for="imgProdotto">Immagine prodotto</label>
+      <div class="input-group">
+        <span
+          class="input-group-addon"><small>https://picsum.photos/seed/valore_seed/140</small></span>
+        <input
+          type="text"
+          id="imgProdotto"
+          class="form-control"
+          [(ngModel)]="imgPathProdotto"
+        />
+      </div>
+    </div> -->
+    <br>
+    <button
+      class="btn btn-primary"
+      (click)="onSubmit()"
+    >
+      {{ buttonText }} prodotto
+    </button>
+  </div>
+</div>
+<ng-template #noLogged>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <p>Mi dispiace ma non hai i permessi per accedere a questa pagina</p>
+    </div>
+  </div>
+</ng-template>

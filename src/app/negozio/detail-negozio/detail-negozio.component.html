@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="jumbotron text-center">
+      <h2>{{ negozio.nome | firstCharUppercase }}</h2>
+    </div>
+  </div>
+</div>
+<div
+  class="row"
+  *ngIf="isLogged"
+>
+  <div class="col-md-12">
+    <div class="btn-group btn-group-justified">
+      <div class="btn-group">
+        <a
+          routerLink="nuovo-prodotto"
+          [queryParams]="{ type: 'add' }"
+          class="btn btn-success"
+        >Aggiungi prodotto</a>
+      </div>
+      <div class="btn-group">
+        <a
+          routerLink="edit"
+          [queryParams]="{ type: 'edit' }"
+          class="btn btn-info"
+        >Modifica negozio</a>
+      </div>
+      <div class="btn-group">
+        <button
+          class="btn btn-danger"
+          (click)="onRemoveNegozio()"
+        >
+          Elimina negozio
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5>Lista articoli</h5>
+      </div>
+      <div class="panel-body">
+        <ng-container *ngIf="negozio.prodotti.length !== 0; else noArticoli">
+          <div
+            class="col-md-4"
+            *ngFor="let prodotto of negozio.prodotti"
+          >
+            <a [routerLink]="[prodotto.id]">
+              <div class="panel panel-default">
+                <div class="panel-body"></div>
+                <div class="panel-heading text-center">
+                  <h4>{{ prodotto.nome }}</h4>
+                </div>
+              </div>
+            </a>
+          </div>
+        </ng-container>
+        <ng-template #noArticoli>
+          <p>Non ci sono articoli</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
